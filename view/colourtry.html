@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <script src='__PUBLICSYTE__/js/jquery.js'></script>
+    <link href='__PUBLICSYTE__/css/bootstrap.css' rel="stylesheet" />
+    <script src='__PUBLICSYTE__/js/bootstrap.js'></script>
+
+
+    <style>
+        .btnzc {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 35px;
+            border: 1px solid #ddd;
+            color: #3498db;
+            border-radius: 5px;
+        }
+        .btnzc1 {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 45px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: black;
+            border-radius: 5px;
+        }
+        .btnzca {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 30px;
+            border: 1px solid #ddd;
+            color: #3498db;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+        .btnjpg {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 155px;
+            border: 1px solid #ddd;
+            color: #3498db;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+        .a-upload {
+            width: 98%;
+            margin-left: 1%;
+            height: 35px;
+            line-height: 1px;
+            position: relative;
+            cursor: pointer;
+            color: #3498db;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            text-align: center;
+
+            display: inline-block;
+            *display: inline;
+            *zoom: 1
+            
+        }
+
+        .a-upload  input {
+            position: absolute;
+            font-size: 100px;
+            left: 50;
+            top: 0;
+            text-align: center;
+
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer
+
+        }
+        .btnzcbule {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: blue;
+            border-radius: 5px;
+        }
+
+
+
+    </style>
+
+
+<script>   
+
+
+
+
+</script>   
+
+
+
+</head>
+
+<body>
+
+   
+    <div>
+        <!-- <h5 class="btnzcbule" >未登录试用中</h5> -->
+
+        <h2 class="btnzc1" >颜色测量工具</h2>
+    </div>
+
+
+    <div>
+
+
+		<div id="load" style="display: none;" align="center">正在计算<img src="__IMG__loop.gif" align="middle"/></div>
+
+    
+            <h4 class="btnzca">样品名:<input type="text"   name="pname" value="" onchange=""></h4>
+            
+            <a href="javascript:;" class="a-upload">
+
+                <input type="file"  id="file" accept="image/*" multiple class="btnzc" oninput="wh('#file','btn','Preview')"><h3>标准样取图→</h3>
+                
+            </a>
+
+            
+            <a href="javascript:;" class="a-upload">
+
+                <input type="file" id="file1" accept="image/*" multiple class="btnzc" oninput="wh('#file1','btn1','Preview1')" ><h3>测试样取图→</h3>
+                
+            </a>
+
+            <form name="form01" method="post" onsubmit="" action="" enctype="multipart/form-data">
+
+                <h4 class="btnzca">样品名:<input type="text"   name="pname" value="" onchange=""></h4>
+
+                <input id="btn" type="hidden"   name="base64" value="" ">
+                <input id="btn1" type="hidden"   name="base641" value="" ">
+
+                <h4 class="btnjpg"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCADIAJYDASIAAhEBAxEB/8QAHAABAQACAwEBAAAAAAAAAAAAAAgDBwIFCQQG/8QAMRAAAgEEAQMCBQIFBQAAAAAAAAECAwQFEQYHEiETMQgUFUFRIkIWMmFicSNTgaTT/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMbq01VVN1Iqo1tQ2ttfnRkITy/Jea3XXuOfucFG35Hj50lUx/qNUqcexRjGU+7wpKa++m5f10BdgIf5RmMLW5Llqq6ucqtlO7rSVCGOruNPc2+1f668L29l/hG0+M3ebz3Qi+sOmHKr7NZ21u2q13dwlb3Dg/1OEHOUtPTWn3fnymBRc5RhFynJRivvJ6RyIF6tc05bmMXhOI8su3PJWUvWu1VUaLVSol6cKj8R3CD33PWnNp+Y7MXCOYcvwXUq4v8PcYeeTVH5erRu8lS+TqQUYxUVUlWUZaai0o1H59vG0BfspRik5SUU2ktvXn8HIkD4r8jyjLckwOCrYeVG3pw9e1q0XJ/MVnTi6unvWqb8b+y8t6Z0PUzlfNPrvEOfVcVcWSs7ajFXEKsqtrVn3zeu9Nx1OK8pPynp+UBboJc+Fr+Mo80y+Sz2Jybx/IKHz0r+t3QouTfcpRT8S7lNa17L28FRgAAAAAAAAAAAAAGKu6ioVHRjGVVRbhGT0m9eNnnxkqOYp895FZ9QKNe3r3sKt3kYRa74OKdWEqflre9RXutS143tehhq/N9H8VmeqlHml3eXEpKn6dawlTjKlW1TdPUm/2uPhx09/nQEsXUPq9PjeSy2EtoXWTq3ix8J0lGV52Uqao+vKKi6rlV/d47m5b8PRtzpp1dw/G+hN7m/o9ja5S3vHZu2srdUad1cSh3U5tR9v0Re3/AGPX2R+nzfw7YjKc7fIlm763hK7V07ONKDjFpp9sH+2PjSWnpaX2Nn5Lg3FsjhLrD3WBx3025q+tVoUqMaSlU/3Nw01P+5ef6gQRy/K3vIqOFzuadCtk724r+vXq01TVWMZQ7VNx1tLbjv3SWt6itYcMqK5rcqdDi0qa21C7q1FYr2/kkpdz/wCW/uWRzzoZxvltTj8HOtjbDDwdGFnaJKFSm5KTj58p/wA22nt737mZfD70xT3/AAz/AN+6/wDQDQ3xNX/IrDqdYZnKW1Otx92yoY/06m6VxRnTSrx37py9Sa3raTjr2TNd9RYcXx9lHAYupnK+XxF1VtnXvIUo0XT725Rioty0pba3790npb0WV1W6UYvqJjcPZXd3c4+jjJv0lbKLTg4pOOn7eIx0/t+Gfd1L6cYvnfFVhbqpOzUKlOrC4owi5pwTST37rTaA0P8ACPleLWvJK2OxEM48zfWEZXUrn03bRlT05dnb+rW5eHL7ePdlYnUcWwNpx3BY3F2cYyjY2tK1VZwSnUjCKinLS93rf+TtwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" id="Preview" width="100" height="150"/>
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCADIAJYDASIAAhEBAxEB/8QAGwABAQEAAwEBAAAAAAAAAAAAAAgHBAUGAgP/xAAtEAACAQQCAQMDAwQDAAAAAAAAAQIDBAURBhIhBxMxCCJBFCNRFUJhcRYyYv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCqQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfnUaVOT79Ek/u8fb/kglX13Spcno4Tm93l7GtVinFurRqzk60NXPST1pfzGXb7kmlFtoL6BBWL5HmuI1ORXPHOU5W6i8Qp0bi7goSi/11KlL9tzqRT8SSe96l+D1N3PC1fSTmOKzGaqYaNbkcqljGMJzoyqqlGbhKEE9U3tvx8Pq0nrTCzASPD1I9R8Thsbj8DXwd/i42FBUL68uoQr1t013n+7VhPXfuk5RT0l8/L8P6TrkkeW43H4mzy0M7gd3HsWdSChc0HUUpQq95xioydRL3F23GUftlpMC7pSjFJykoptJbevP8H0SL9XWQ5HleW4fAQxVSFhS7VrGvT7N3NRwi6j+dah/P4XlvTPOepnK+af13iHPquKuLJWdtRiriFWVW1qz7zeu6bjqcV5SflPT8oC3QS59LX/ADKPNMvks9icm8fyCh+ulf1u0KLk32Uop+JdlNa18L48FRgAAAAAAAAAAAAAAh3k1xgs16hcvtuL4fF4jG23/bIwrSpxcadan3b7SdNRm4vShGMn4Sb21K4Wtpp/n/OjArv6Y+N1bapaUMzlqNlK6Vyqf7cpRXVpx7dfPjWm09efnbAn+1wlzleP5upjqlvXuVhqfezhJ+9BVchCtBvx1a6OLem2tpNJmgULDF5H0S9Tru8t6F3Oxyzna1U1L26jhSh2jJf7f+GbNnvQviWVwyx1v+tx8P01K1lUt6icqipS7QlPsn2ktyW/4ev7Y65vFvR3juA4Dk+I+5e3uNyVV1riVaoo1JP7NJOKWkukfwBGuVpYbMcZ4zmfdqq4tp0sbnNbSppbjbygted0KMttb8x8pb86N6b8gwvFPXKtm6uWtrTilSyha2lxUU3Kvb+3GnR1HTl2TopTk0knGW9eEbs/QTg83CjOzu3jac41I4+NfpR7pa7ScUqk35l5nNtbaWk9HE5D9P3EczynG5TVxbWVnTp0njKWvYqRhvS8+Yp/3a+fL+W2BjP1RXnIsZ6q2uWylqqnH1Rdtj0pr269GVPVeDa8qUvcmm9bS66+EzOPUWHF8fZRwGLqZyvl8RdVbZ17yFKNF0+7coxUW5aUttb+e0npb0Wb6vel2O9TLTF0MlfXVmrCpKcHbqL7KSSkntf+Vp/j+Gcv1L9OMXzviqwt1UnZqFSnVhcUYRc04JpJ7+VptAYP9I+V4ta8krY7EQzjzN9YRldSufbdtGVPTl06/drcvDl+PHyysTqOLYG047gsbi7OMZRsbWlaqs4JTqRhFRTlpfL1v/Z24AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf//Z" id="Preview1" width="100" height="150"/></h4>
+       
+                <input class="btnzca" type="submit" value="确认" >
+            
+
+            </form>
+
+    </div>
+    <div style="background-color:#eeecec;width:98%;margin-left:1%;margin-top:5px;">
+        <p style="text-indent:2em; text-align: center;">
+      说明：标准样与测试样拍摄环境相同，光线均匀，最好在灯光箱中！
+        </p>
+    </div>
+
+
+
+
+
+</body>
+
+<script type="text/javascript">
+
+    function wh(id,btn,Preview)
+        {
+    
+            var eleFile = document.querySelector(id);
+            // 压缩图片需要的一些元素和对象
+            var reader = new FileReader(), img = new Image();
+    
+            // 选择的文件对象
+            var file = null;
+    
+            // 缩放图片需要的canvas
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+    
+            // base64地址图片加载完毕后
+            img.onload = function ()
+            {
+                // 图片原始尺寸
+                var originWidth = this.width;
+                var originHeight = this.height;
+                    
+                // 最大尺寸限制
+                var maxWidth = 500, maxHeight = 4000;
+                // 目标尺寸
+                var targetWidth = originWidth, targetHeight = originHeight;
+                // 图片尺寸超过400x400的限制
+                if (originWidth > maxWidth || originHeight > maxHeight) 
+                {
+                    if (originWidth / originHeight > maxWidth / maxHeight) {
+                        // 更宽，按照宽度限定尺寸
+                        targetWidth = maxWidth;
+                        targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+                    } else {
+                        targetHeight = maxHeight;
+                        targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+                    }
+                }
+                    
+                // canvas对图片进行缩放
+                canvas.width = targetWidth;
+                canvas.height = targetHeight;
+                // 清除画布 
+                context.clearRect(0, 0, targetWidth, targetHeight);
+                // 图片压缩
+                context.drawImage(img, 0, 0, targetWidth, targetHeight);
+                // canvas转为blob并上传
+                    
+                    
+                var dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+    
+                document.getElementById(btn).value=dataUrl;//将BASE64值赋INPUT待上传
+                var pre = document.getElementById(Preview);//将BASE64值赋img预览
+                pre.src = dataUrl;//将BASE64值赋img预览
+    
+            };
+    
+            // 文件base64化，以便获知图片原始尺寸
+            reader.onload = function(e) {
+                img.src = e.target.result;
+            };
+            eleFile.addEventListener('change', function (event) 
+            {
+                file = event.target.files[0];
+                // 选择的文件是图片
+                if (file.type.indexOf("image") == 0) 
+                {
+                    reader.readAsDataURL(file);    
+                }
+            });
+    
+        }
+    
+</script>
+
+
+</html>
