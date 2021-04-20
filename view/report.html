@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <script src='__PUBLICSYTE__/js/jquery.js'></script>
+    <link href='__PUBLICSYTE__/css/bootstrap.css' rel="stylesheet" />
+    <script src='__PUBLICSYTE__/js/bootstrap.js'></script>
+    <link href='__PUBLICSYTE__/css/sweetalert.min.css' rel="stylesheet">
+    <script src='__PUBLICSYTE__/js/sweetalert.min.js'></script>
+
+
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+        }
+
+        .right {
+        position: absolute;
+        right: 1%;
+        width: 48%;
+        }
+        .left {
+        position: absolute;
+        left: 1%;
+        width: 48%;
+        }
+ 
+ 
+        .btnzc {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 35px;
+            border: 1px solid #ddd;
+            color: #3498db;
+            border-radius: 5px;
+        }
+        .btnzc1 {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 35px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: black;
+            border-radius: 5px;
+        }
+        .btnzcred {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 25px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: red;
+            border-radius: 5px;
+        }
+        .btnzc2 {
+            width: 98%;
+            margin-left: 1%;
+            background-color: #eeecec;
+            height: 18px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: black;
+            border-radius: 5px;
+        }
+        
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+   
+    <div>
+        <h2 class="btnzc1" >对比结果</h2>
+        <h5 class="btnzc2" >测试时间：{$jj1[0]['date']}<a href="../index.php/cl" >(重测)</a></h5>
+
+        <h3 class="btnzcred" >测试样与标准样相似度{$similar}%</h3>
+        <h3 class="btnzcred" >R:{$sim.1}%G:{$sim.2}%B:{$sim.3}%</h3>
+        
+    </div>
+    <!-- <img src="../uploads/colour/{$name1}.gif"style="margin-left: 15%"> -->
+    <!-- <img src="../uploads/colour/{$name2}.gif"style="margin-left: 15%"> -->
+
+    <div class="container">
+
+        <div class="right">
+
+            <!-- <img src="../uploads/colour/gif/{$name2}.gif"> -->
+            <img src="{$jj2.0.jpg_base64}" height="100">
+
+            <h4>{$name2}</h4>
+            <!-- {$ii=1} -->
+            {volist name="jj2" id="vo1" }
+
+                <p  style="background-color: rgb({$vo1.r},{$vo1.g},{$vo1.b});color: red; text-align: right;">
+
+                    {$vo1.r}-{$vo1.g}-{$vo1.b}</p>
+                <!-- <a href="colourget?r={$vo1.r}&g={$vo1.g}&b={$vo1.b}&n={$vo1.name}&p=../uploads/colour/{$vo1.name}{$ii}.png" >{$vo1.rgb}</a></p> -->
+
+
+            {/volist}
+        </div>
+        </div>
+
+        <div class="container">
+
+            <div class="left">
+
+                <!-- <img src="../uploads/colour/gif/{$name1}.gif"> -->
+                <img src="{$jj1.0.jpg_base64}" height="100">
+
+
+            <h4>{$name1}</h4>
+
+            <!-- {$iii=1} -->
+            {volist name="jj1" id="vo1" }
+
+        
+                <p  style="background-color: rgb({$vo1.r},{$vo1.g},{$vo1.b}); color: red;text-align: left;">
+
+                        {$vo1.r}-{$vo1.g}-{$vo1.b}</p>
+                    <!-- <a href="colourget?r={$vo1.r}&g={$vo1.g}&b={$vo1.b}&n={$vo1.name}&p=../uploads/colour/{$vo1.name}{$iii}.png" >{$vo1.rgb}</a></p> -->
+
+
+            {/volist}
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
